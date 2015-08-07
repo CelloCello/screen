@@ -1,0 +1,99 @@
+#Start message
+startup_message off
+
+# Set hardstatus always on
+#hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw %=| %M %d %0c:%s "
+#hardstatus alwayslastline " %{=u .r} %-w%<%{=ub .Y}%n %t%{=u .r}%+w %=| %Y/%m/%d%{= .M} %0c "
+#caption always "%{=u .r} %-w%<%{=ub .Y}%n %t%{=u .r}%+w "
+#hardstatus alwaysignore
+#hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .Y}$USER%{= .R}@%H %=%{= .m} %Y/%m/%d%{= .M} %0c "
+#hardstatus alwayslastline '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%{KY}%101`%{KW}|%D %M %d %Y%{= Kc} %C%A%{-}'
+hardstatus alwayslastline '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW} | %m/%d%{= Kc} %c' 
+
+# Set default encoding using utf8
+defutf8 on
+
+# Refresh the display when exiting programs
+altscreen on
+
+# Dynamic title
+shelltitle '$ |bash'
+
+# Disable vbell
+vbell off
+
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm' # 開啟 256 色模式
+
+# Keboard binding
+# bind Alt`~= to screen0~12
+bindkey "^[`" select 0
+bindkey "^[1" select 1
+bindkey "^[2" select 2
+bindkey "^[3" select 3
+bindkey "^[4" select 4
+bindkey "^[5" select 5
+bindkey "^[6" select 6
+bindkey "^[7" select 7
+bindkey "^[8" select 8
+bindkey "^[9" select 9
+bindkey "^[0" select 10
+bindkey "^[-" select 11
+bindkey "^[=" select 12
+
+
+#=== 分割(Split) ===
+
+# - Alt + S : 水平分割當前視窗。 (C-a S) 
+bindkey "^[S" split
+
+# - Alt + V : 垂直分割當前視窗。 (C-a |) 
+bindkey "^[V" split -v
+
+# - Alt + q : 關閉當前分割區。 (C-a X)
+bindkey "^[q" remove
+
+# - Alt + p : 切換當前分割區。 (C-a tab)
+bindkey "^[p" focus
+
+
+#== Ctrl ==
+
+# === 分頁(Tab) ===
+
+# - Ctrl + j/J : 切換至下個視窗。 (C-a n)
+bindkey "^j" next
+bindkey "^J" next
+
+# - Ctrl + k/K : 切換至上個視窗。 (C-a p)
+bindkey "^k" prev
+bindkey "^K" prev
+
+# list
+bindkey "^l" windowlist
+
+#== F1, F2, F3 .. ==
+
+# F1 : 新增子視窗。(C-a c)
+#bindkey -k k1 screen
+# F2 : 自訂當前視窗標題。 (C-a A)
+bindkey -k k2 title
+# F3 : 進入複製/捲動模式。 (C-a esc)
+bindkey -k k3 copy
+# F4 : 切換至上一個視窗。 (C-a p)
+#bindkey -k k4 prev
+# F5 : 切換至下一個視窗。 (C-a n)
+#bindkey -k k5 next
+# F6 : 切換當前分割區。 (C-a tab)
+#bindkey -k k6 focus
+bindkey -k k4 focus
+
+# bind F7 to detach screen session (to background)
+bindkey -k k7 detach
+# bind F8 to kill current screen window
+bindkey -k k8 kill
+# bind F9 to create a new screen
+#bindkey -k k9 screen
+bindkey -k k9 prev
+# bind F10 to rename current screen window
+#bindkey -k k; title
+bindkey -k k; next
